@@ -57,16 +57,21 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Expanded(
               child: DropdownButtonHideUnderline(
-                child: ButtonTheme(
-                  alignedDropdown: true,
+                 child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    border: Border.all(
+                        color: Colors.black26, style: BorderStyle.solid, width: 0.80),
+                  ),
                   child: DropdownButton<String>(
                     value: _myActivity,
                     iconSize: 30,
                     style: TextStyle(
-                      color: Colors.black54,
+                      color: Colors.black,
                       fontSize: 16,
                     ),
-                    hint: Text('Select Category'),
+                    hint: Text('Choose...'),
                     onChanged: (String valuess) {
                       setState(() {
                         _myActivity = valuess;
