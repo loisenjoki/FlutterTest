@@ -5,6 +5,9 @@
          In most cases you can leave this as-is, but you if you want to provide
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="LearningFlutter"
@@ -43,5 +46,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <meta-data android:name="com.mapbox.token" android:value="sk.eyJ1IjoibHVpc2Ftd2FpIiwiYSI6ImNrYXo5djF2MTAyc24ycm1uc3VqM3dzNmgifQ.Qcgz4k4B3dGtQ8_RdrVqjA" />
+
     </application>
 </manifest>

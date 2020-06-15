@@ -33,12 +33,31 @@ dependencies:
   json_annotation: ^2.0.0
   json_serializable: ^2.0.0
   dio: ^3.0.9
+  flutter_video_compress: ^0.3.7+8
+  video_player: ^0.10.11+1
+  image_picker: 0.6.5
+  audioplayer: ^0.8.1
+  file_picker: ^1.7.0
+  video_compress: ^2.0.0
+  flutter_swiper: ^1.1.6
+  chewie: ^0.9.10
+
+
+
+
+
+
+
+
+
 
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,9 +1,16 @@
-import 'package:LearningFlutter/pages/HomeScreen.dart';
-import 'package:flutter/material.dart';
 
+import 'package:LearningFlutter/pages/AudioApp.dart';
+import 'package:LearningFlutter/pages/FilePicker.dart';
+import 'package:LearningFlutter/pages/HomeScreen.dart';
+import 'package:LearningFlutter/pages/ImageCompression.dart';
+import 'package:LearningFlutter/pages/Swiper.dart';
+import 'package:LearningFlutter/pages/VideoCompression.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(home: MyApp()));
 }
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -74,10 +81,58 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
+        title: Text("Main Page"),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Flutter Test'),
+              decoration: BoxDecoration(
+                color:Colors.blue,
+              )
+            ),
+            ListTile(
+              title: Text("Drop Down"),
+              onTap:() {
+                goToHome();
+              },
+            ),
+            ListTile(
+              title: Text("Video Compress"),
+              onTap: (){
+                goToCheckbox();
+              },
+            ),
+            ListTile(
+              title: Text("Audio Player"),
+              onTap: (){
+                goToAaudio();
+              },
+            ),
+            ListTile(
+              title: Text("Video Compress"),
+              onTap: (){
+                gotoVideoCompression();
+              },
+            )  ,
+            ListTile(
+              title: Text("Slider"),
+              onTap: (){
+                SwiperPage();
+              },
+            )
+
+          ],
+
+        ),
+      ),
+   /*   appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -93,23 +148,12 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            RaisedButton(
-              onPressed: goToHome,
-              textColor: Colors.white,
-              color: Colors.blue,
-              padding: const EdgeInsets.all(8.0),
-              child: new Text(
-                "Let's Start",
-              ),
-            ),
-            RaisedButton(
-              onPressed: goToCheckbox,
-              textColor: Colors.white,
-              color: Colors.blue,
-              padding: const EdgeInsets.all(8.0),
-              child: new Text(
-                "Checkboxes",
-              ),
+            FloatingActionButton(
+              child: Icon(Icons.audiotrack),
+              onPressed: () async{
+                kUrl = await FilePicker.getFilePath();
+
+              },
             ),
           ],
         ),
@@ -122,8 +166,35 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void goToCheckbox() {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> Checkbox()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> ImageCompression()));
 
+
+  } void goToAaudio() {
+    showDialog(
+        context: context,
+        builder: (_) {
+          return AudioApp();
+        });
+
+  }
+  void gotopicker() {
+    showDialog(
+        context: context,
+        builder: (_) {
+          return FilePickerDemo();
+        });
+
+  }
+  void SwiperPage(){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> SwiperClass()));
+
+  }
+
+  void gotoVideoCompression() {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> VideoCompression()));
 
   }
 }
+
+
+

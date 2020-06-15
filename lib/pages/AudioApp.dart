@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:audioplayer/audioplayer.dart';
@@ -14,7 +13,7 @@ import 'package:http/http.dart';
 
 typedef void OnError(Exception exception);
 
-String kUrl = "";
+String  kUrl = "";
 
 enum PlayerState { stopped, playing, paused }
 
@@ -136,20 +135,20 @@ class _AudioAppState extends State<AudioApp> {
             print('_loadFile => exception $exception'));
 
     //final dir = await getApplicationDocumentsDirectory();
-    final file = File(kUrl);
+   // final file = File('${dir.path}/audio.mp3');
 
-   await file.writeAsBytes(bytes);
-    if (await file.exists())
+   // await file.writeAsBytes(bytes);
+   // if (await file.exists())
       setState(() {
-        localFilePath = file.path;
+     //   localFilePath = file.path;
       });
   }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Center(
-      child: Center(
+    return AlertDialog(
+      content:  Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
@@ -179,14 +178,8 @@ class _AudioAppState extends State<AudioApp> {
                   ],
                 ),
               ),
-                FloatingActionButton(
-              child: Icon(Icons.audiotrack),
-              onPressed: () async{
-                kUrl = await FilePicker.getFilePath();
 
 
-              },
-            ),
           ],
         ),
       ),
@@ -274,4 +267,5 @@ class _AudioAppState extends State<AudioApp> {
       ],
     );
   }
+
 }
