@@ -1,5 +1,6 @@
 
 
+import 'package:LearningFlutter/models/CountForm.dart';
 import 'package:dio/dio.dart';
 
 class Apiclient {
@@ -7,13 +8,17 @@ class Apiclient {
   Response response;
   Dio dio = new Dio();
   List <dynamic> catList = [] ;
+  List  Countylist = const [];
 
 
-  //loading categories
-  Future getCategories() async {
-    response = await dio.get("https://fainiapis.pro/sikika/v1/categories");
-    catList = response.data['subCategories'];
-    print(response.data['subCategories']);
-    return catList;
+
+  Future getCounties(String id)async{
+    response = await dio.get("");
+    Countylist = (response.data as List).map((e) => CountyForm.fromJson(e)).toList();
+    print(Countylist);
+    return Countylist;
   }
+
+
+
 }

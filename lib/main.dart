@@ -102,6 +102,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 "Let's Start",
               ),
             ),
+            RaisedButton(
+              onPressed: goToCheckbox,
+              textColor: Colors.white,
+              color: Colors.blue,
+              padding: const EdgeInsets.all(8.0),
+              child: new Text(
+                "Checkboxes",
+              ),
+            ),
           ],
         ),
       ),
@@ -110,5 +119,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void goToHome() {
     Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+  }
+
+  void goToCheckbox() {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> Checkbox()));
+
+
   }
 }
